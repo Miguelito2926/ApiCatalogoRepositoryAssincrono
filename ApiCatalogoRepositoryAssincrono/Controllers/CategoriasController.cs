@@ -1,15 +1,16 @@
 ﻿using ApiCatalogoRepositoryAssincrono.DTOs;
 using ApiCatalogoRepositoryAssincrono.Models;
+using ApiCatalogoRepositoryAssincrono.Pagination;
 using ApiCatalogoRepositoryAssincrono.Repository;
 using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace ApiCatalogoRepositoryAssincrono.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoriasControllers : ControllerBase
+    public class CategoriasController : ControllerBase
     {
         // Declaração do contexto do banco de dados
         private readonly IUnitOfWork _uof;
@@ -24,11 +25,21 @@ namespace ApiCatalogoRepositoryAssincrono.Controllers
 
         // Endpoint para obter todas as categorias com seus produtos
         [HttpGet("produtos")]
-        public ActionResult<IEnumerable<CategoriaDTO>> GetCategoriasProdutos()
+        public ActionResult<IEnumerable<CategoriaDTO>> GetCategoriasProdutos([FromQuery] CategoriasParameters categoriasParameters)
         {
             try
             {
-                var categorias = _uof.CategoriaRepository.GetCategoriasProdutos().ToList();
+                var categorias = _uof.CategoriaRepository.GetCategoriasProdutos(categoriasParameters);
+                var metadata = new
+                {
+                    categorias.TotalCount,
+                    categorias.PageSize,
+                    categorias.CurrentPage,
+                    categorias.TotalPages,
+                    categorias.HasNext,
+                    categorias.HasPrevious
+                };
+                Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
                 var categoriasDto = _mapper.Map<List<CategoriaDTO>>(categorias);
                 return Ok(categoriasDto);
             }
@@ -42,10 +53,20 @@ namespace ApiCatalogoRepositoryAssincrono.Controllers
 
         // Endpoint para obter todas as categorias
         [HttpGet]
-        public ActionResult<IEnumerable<CategoriaDTO>> GetAll()
+        public ActionResult<IEnumerable<CategoriaDTO>> Get([FromQuery] CategoriasParameters categoriasParameters)
         {
             // Utilizando AsNoTracking para consultas que não precisam rastrear alterações
-            var categorias = _uof.CategoriaRepository.Get().ToList();
+            var categorias = _uof.CategoriaRepository.GetCategorias(categoriasParameters);
+            var metadata = new
+            {
+                categorias.TotalCount,
+                categorias.PageSize,
+                categorias.CurrentPage,
+                categorias.TotalPages,
+                categorias.HasNext,
+                categorias.HasPrevious
+            };
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
             var categoriasDto = _mapper.Map<List<CategoriaDTO>>(categorias);
             return Ok(categoriasDto);
         }

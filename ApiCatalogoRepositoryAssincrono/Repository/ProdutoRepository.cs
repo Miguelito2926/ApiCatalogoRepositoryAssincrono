@@ -1,5 +1,6 @@
 ﻿using ApiCatalogoRepositoryAssincrono.Context;
 using ApiCatalogoRepositoryAssincrono.Models;
+using ApiCatalogoRepositoryAssincrono.Pagination;
 
 namespace ApiCatalogoRepositoryAssincrono.Repository
 {
@@ -8,7 +9,6 @@ namespace ApiCatalogoRepositoryAssincrono.Repository
         public ProdutoRepository(DbCatalogoContext contexto) : base(contexto)
         {
         }
-
         public PageList<Produto> GetProdutos(ProdutosParameters produtosParameters)
         {
             //return Get()
@@ -19,9 +19,17 @@ namespace ApiCatalogoRepositoryAssincrono.Repository
             return PageList<Produto>.ToPageList(Get().OrderBy(on => on.Nome),
                 produtosParameters.PageNumber, produtosParameters.PageSize);
         }
-        public IEnumerable<Produto> GetProdutosPorPreco()
+        /* public IEnumerable<Produto> GetProdutosPorPreco() 
+         {
+             return Get().OrderBy(c => c.Preco).ToList();
+         }*/
+
+        public PageList<Produto> GetProdutosPorPreco(ProdutosParameters produtosParameters)
         {
-            return Get().OrderBy(c => c.Preco).ToList();
+            return PageList<Produto>.ToPageList(Get().OrderBy(on => on.Preco),
+                produtosParameters.PageNumber,
+                produtosParameters.PageSize);
+
         }
     }
 }

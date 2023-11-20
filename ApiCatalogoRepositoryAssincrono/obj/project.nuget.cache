@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7CVMw13djCd3H+L4BHQBq2BydRAQhhcRI+ryaikn+CkD8D0f5UsurIAzax3vgtXz7IFaSqJqIjXhMsxI796a6w==",
+  "dgSpecHash": "cJ9s/M1GDMqONNJls1FXS5hMXYzBeEPAohZ86tSYQMKbuZUhNg6rCEa1vv1/fa3iovY7NOoLwNxB4KyTtusljA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\EliteDesk ssd\\Source\\Repos\\Miguelito2926\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono.csproj",
+  "projectFilePath": "C:\\Users\\EliteDesk ssd\\source\\repos\\Miguelito2926\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\EliteDesk ssd\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\EliteDesk ssd\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

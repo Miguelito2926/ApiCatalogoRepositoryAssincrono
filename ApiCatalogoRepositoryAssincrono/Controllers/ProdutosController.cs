@@ -1,5 +1,7 @@
 ﻿using ApiCatalogoRepositoryAssincrono.DTOs;
 using ApiCatalogoRepositoryAssincrono.Models;
+using ApiCatalogoRepositoryAssincrono.Pagination;
+using ApiCatalogoRepositoryAssincrono.Repository;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,10 +11,9 @@ namespace ApiCatalogoRepositoryAssincrono.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProdutosControllers : ControllerBase
+    public class ProdutosController : ControllerBase
     {
-        {
-    private readonly IUnitOfWork _uof;// injeção de dependencia
+        private readonly IUnitOfWork _uof;// injeção de dependencia
 
         private readonly IMapper _mapper;// injeção de dependencia
 
@@ -23,9 +24,19 @@ namespace ApiCatalogoRepositoryAssincrono.Controllers
         }
 
         [HttpGet("menorpreco")]
-        public ActionResult<IEnumerable<ProdutoDTO>> GetProdutosPrecos()
+        public ActionResult<IEnumerable<ProdutoDTO>> GetProdutosPrecos([FromQuery] ProdutosParameters produtosParameters)
         {
-            var produtos = _uof.ProdutoRepository.GetProdutosPorPreco().ToList();
+            var produtos = _uof.ProdutoRepository.GetProdutosPorPreco(produtosParameters);
+            var metadata = new
+            {
+                produtos.TotalCount,
+                produtos.PageSize,
+                produtos.CurrentPage,
+                produtos.TotalPages,
+                produtos.HasNext,
+                produtos.HasPrevious
+            };
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
             var produtosDto = _mapper.Map<List<ProdutoDTO>>(produtos);
             return Ok(produtosDto);
         }

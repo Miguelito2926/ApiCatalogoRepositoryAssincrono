@@ -2,7 +2,7 @@
 
 namespace ApiCatalogoRepositoryAssincrono.Repository
 {
-    public interface IRepository IRepository<T>
+    public interface IRepository<T>
     {
         IQueryable<T> Get();
         T GetById(Expression<Func<T, bool>> predicate);

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\EliteDesk ssd\\Source\\Repos\\Miguelito2926\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono.csproj": {}
+    "C:\\Users\\EliteDesk ssd\\source\\repos\\Miguelito2926\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono.csproj": {}
   },
   "projects": {
-    "C:\\Users\\EliteDesk ssd\\Source\\Repos\\Miguelito2926\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono.csproj": {
+    "C:\\Users\\EliteDesk ssd\\source\\repos\\Miguelito2926\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\EliteDesk ssd\\Source\\Repos\\Miguelito2926\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono.csproj",
+        "projectUniqueName": "C:\\Users\\EliteDesk ssd\\source\\repos\\Miguelito2926\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono.csproj",
         "projectName": "ApiCatalogoRepositoryAssincrono",
-        "projectPath": "C:\\Users\\EliteDesk ssd\\Source\\Repos\\Miguelito2926\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono.csproj",
+        "projectPath": "C:\\Users\\EliteDesk ssd\\source\\repos\\Miguelito2926\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono.csproj",
         "packagesPath": "C:\\Users\\EliteDesk ssd\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\EliteDesk ssd\\Source\\Repos\\Miguelito2926\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono\\obj\\",
+        "outputPath": "C:\\Users\\EliteDesk ssd\\source\\repos\\Miguelito2926\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

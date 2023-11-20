@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace ApiCatalogoRepositoryAssincrono.Repository
 {
-    public class Repository : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
     {
         protected DbCatalogoContext _context;
         public Repository(DbCatalogoContext context)
