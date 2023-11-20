@@ -3,11 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiCatalogoRepositoryAssincrono", "ApiCatalogoRepositoryAssincrono\ApiCatalogoRepositoryAssincrono.csproj", "{D3186BC7-AF7F-46B3-B04B-CBA22C89703A}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3186BC7-AF7F-46B3-B04B-CBA22C89703A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3186BC7-AF7F-46B3-B04B-CBA22C89703A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3186BC7-AF7F-46B3-B04B-CBA22C89703A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3186BC7-AF7F-46B3-B04B-CBA22C89703A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {334F09B3-9ACD-4761-839C-AE381AE285F7}
+		SolutionGuid = {542BFCE7-ADFD-4F42-94E2-C1042D2D5D26}
 	EndGlobalSection
 EndGlobal
