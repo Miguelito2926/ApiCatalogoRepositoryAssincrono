@@ -44,3 +44,4 @@ C:\Users\EliteDesk ssd\source\repos\Miguelito2926\ApiCatalogoRepositoryAssincron
 C:\Users\EliteDesk ssd\source\repos\Miguelito2926\ApiCatalogoRepositoryAssincrono\ApiCatalogoRepositoryAssincrono\obj\Debug\net8.0\ApiCatalogoRepositoryAssincrono.pdb
 C:\Users\EliteDesk ssd\source\repos\Miguelito2926\ApiCatalogoRepositoryAssincrono\ApiCatalogoRepositoryAssincrono\obj\Debug\net8.0\ApiCatalogoRepositoryAssincrono.genruntimeconfig.cache
 C:\Users\EliteDesk ssd\source\repos\Miguelito2926\ApiCatalogoRepositoryAssincrono\ApiCatalogoRepositoryAssincrono\obj\Debug\net8.0\ref\ApiCatalogoRepositoryAssincrono.dll
+C:\Users\EliteDesk ssd\source\repos\Miguelito2926\ApiCatalogoRepositoryAssincrono\ApiCatalogoRepositoryAssincrono\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

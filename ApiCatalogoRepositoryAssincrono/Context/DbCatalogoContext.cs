@@ -11,7 +11,7 @@ namespace ApiCatalogoRepositoryAssincrono.Context
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Produto> Produtos { get; set; }
 
-        // Método chamado durante a criação do modelo
+        /*/ Método chamado durante a criação do modelo
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Configuração das propriedades da entidade Categoria
@@ -30,6 +30,6 @@ namespace ApiCatalogoRepositoryAssincrono.Context
             modelBuilder.Entity<Produto>().HasOne(c => c.Categoria)
                 .WithMany(p => p.Produtos)
                 .HasForeignKey(c => c.CategoriaId);
-        }
+        }*/
     }
 }

@@ -3,6 +3,7 @@ using System;
 using ApiCatalogoRepositoryAssincrono.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiCatalogoRepositoryAssincrono.Migrations
 {
     [DbContext(typeof(DbCatalogoContext))]
-    partial class DbCatalogoContextModelSnapshot : ModelSnapshot
+    [Migration("20231121181809_Identity_v2")]
+    partial class Identity_v2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
