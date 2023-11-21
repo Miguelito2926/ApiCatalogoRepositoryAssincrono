@@ -1,9 +1,10 @@
 ﻿using ApiCatalogoRepositoryAssincrono.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiCatalogoRepositoryAssincrono.Context
 {
-    public class DbCatalogoContext : DbContext
+    public class DbCatalogoContext : IdentityDbContext
     {
         public DbCatalogoContext(DbContextOptions<DbCatalogoContext> options) : base(options) { }
 
