@@ -6,8 +6,8 @@ namespace ApiCatalogoRepositoryAssincrono.Repository
     public interface ICategoriaRepository : IRepository<Categoria>
     {
 
-        PageList<Categoria> GetCategorias(CategoriasParameters categoriasParameters);
-        PageList<Categoria> GetCategoriasProdutos(CategoriasParameters categoriasParameters);
+       Task<PageList<Categoria>> GetCategorias(CategoriasParameters categoriasParameters);
+       Task<PageList<Categoria>> GetCategoriasProdutos(CategoriasParameters categoriasParameters);
     }
 }
 

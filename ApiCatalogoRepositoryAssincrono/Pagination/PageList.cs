@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
+
 namespace ApiCatalogoRepositoryAssincrono.Pagination
 {
     public class PageList<T> : List<T> 
@@ -19,10 +21,10 @@ namespace ApiCatalogoRepositoryAssincrono.Pagination
             TotalPages = (int)Math.Ceiling(count / (double)pageSize);
             AddRange(items);
         }
-        public static PageList<T> ToPageList(IQueryable<T> source, int pageNumber, int pageSize)
+        public async static Task<PageList<T>> ToPageList(IQueryable<T> source, int pageNumber, int pageSize)
         {
             var count = source.Count();
-            var items = source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            var items = await source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
             return new PageList<T>(items, count, pageNumber, pageSize);
         }
     }

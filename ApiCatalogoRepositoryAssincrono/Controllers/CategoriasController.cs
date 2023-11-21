@@ -25,11 +25,11 @@ namespace ApiCatalogoRepositoryAssincrono.Controllers
 
         // Endpoint para obter todas as categorias com seus produtos
         [HttpGet("produtos")]
-        public ActionResult<IEnumerable<CategoriaDTO>> GetCategoriasProdutos([FromQuery] CategoriasParameters categoriasParameters)
+        public async Task<ActionResult<IEnumerable<CategoriaDTO>>> GetCategoriasProdutos([FromQuery] CategoriasParameters categoriasParameters)
         {
             try
             {
-                var categorias = _uof.CategoriaRepository.GetCategoriasProdutos(categoriasParameters);
+                var categorias = await _uof.CategoriaRepository.GetCategoriasProdutos(categoriasParameters);
                 var metadata = new
                 {
                     categorias.TotalCount,
@@ -53,10 +53,10 @@ namespace ApiCatalogoRepositoryAssincrono.Controllers
 
         // Endpoint para obter todas as categorias
         [HttpGet]
-        public ActionResult<IEnumerable<CategoriaDTO>> Get([FromQuery] CategoriasParameters categoriasParameters)
+        public async Task<ActionResult<IEnumerable<CategoriaDTO>>> Get([FromQuery] CategoriasParameters categoriasParameters)
         {
             // Utilizando AsNoTracking para consultas que não precisam rastrear alterações
-            var categorias = _uof.CategoriaRepository.GetCategorias(categoriasParameters);
+            var categorias = await _uof.CategoriaRepository.GetCategorias(categoriasParameters);
             var metadata = new
             {
                 categorias.TotalCount,
@@ -74,11 +74,11 @@ namespace ApiCatalogoRepositoryAssincrono.Controllers
 
         // Endpoint para obter uma categoria por ID usando restrição de rota definindo que espera um ID do tipo inteiro maior que 0
         [HttpGet("{id:int:min(1)}", Name = "ObterCategoria")]
-        public ActionResult<CategoriaDTO> Get(int id)
+        public async Task<ActionResult<CategoriaDTO>> Get(int id)
         {
             try
             {
-                var categoria = _uof.CategoriaRepository.GetById(p => p.CategoriaId == id);
+                var categoria = await _uof.CategoriaRepository.GetById(p => p.CategoriaId == id);
                 if (categoria == null)
                 {
                     // Retornando NotFound com uma mensagem personalizada
@@ -98,7 +98,7 @@ namespace ApiCatalogoRepositoryAssincrono.Controllers
 
         // Endpoint para adicionar uma nova categoria
         [HttpPost]
-        public ActionResult Post(CategoriaDTO categoriaDto)
+        public async Task<ActionResult> Post(CategoriaDTO categoriaDto)
         {
             try
             {
@@ -109,7 +109,7 @@ namespace ApiCatalogoRepositoryAssincrono.Controllers
                     return BadRequest("Bad Request. Campos obrigatórios de entrada não enviados ou erros de validação dos campos de entrada.");
                 }
                 _uof.CategoriaRepository.Add(categoria);
-                _uof.Commit();
+                await _uof.Commit();
                 // Utilizando CreatedAtRouteResult para retornar um código 201 com a rota de obtenção da categoria criada
                 var categoriaDTO = _mapper.Map<CategoriaDTO>(categoria);
                 return new CreatedAtRouteResult("ObterCategoria",
@@ -125,7 +125,7 @@ namespace ApiCatalogoRepositoryAssincrono.Controllers
 
         // Endpoint para atualizar uma categoria existente
         [HttpPut("{id:int}")]
-        public ActionResult Put(int id, CategoriaDTO categoriaDto)
+        public async Task<ActionResult> Put(int id, CategoriaDTO categoriaDto)
         {
             if (id != categoriaDto.CategoriaId)
             {
@@ -134,7 +134,7 @@ namespace ApiCatalogoRepositoryAssincrono.Controllers
             }
             var categoria = _mapper.Map<Categoria>(categoriaDto);
             _uof.CategoriaRepository.Update(categoria);
-            _uof.Commit();
+            await _uof.Commit();
             var categoriaDTO = _mapper.Map<CategoriaDTO>(categoria);
 
             // Retornando Ok com a categoria modificada
@@ -143,11 +143,11 @@ namespace ApiCatalogoRepositoryAssincrono.Controllers
 
         // Endpoint para excluir uma categoria
         [HttpDelete("{id:int}")]
-        public ActionResult<CategoriaDTO> Delete(int id)
+        public async Task<ActionResult<CategoriaDTO>> Delete(int id)
         {
             try
             {
-                var categoria = _uof.CategoriaRepository.GetById(p => p.CategoriaId == id);
+                var categoria = await _uof.CategoriaRepository.GetById(p => p.CategoriaId == id);
 
                 if (categoria == null)
                 {
@@ -155,7 +155,7 @@ namespace ApiCatalogoRepositoryAssincrono.Controllers
                     return NotFound("Recurso não encontrado.");
                 }
                 _uof.CategoriaRepository.Delete(categoria);
-                _uof.Commit();
+                await _uof.Commit();
                 var categoriaDTO = _mapper.Map<CategoriaDTO>(categoria);
 
                 // Retornando Ok com a categoria removida

@@ -11,15 +11,15 @@ namespace ApiCatalogoRepositoryAssincrono.Repository
         {
 
         }
-        public PageList<Categoria> GetCategorias(CategoriasParameters categoriasParameters)
+        public async Task<PageList<Categoria>> GetCategorias(CategoriasParameters categoriasParameters)
         {
-            return PageList<Categoria>.ToPageList(Get().OrderBy(on => on.Nome),
+            return await PageList<Categoria>.ToPageList(Get().OrderBy(on => on.Nome),
                 categoriasParameters.PageNumber,
                 categoriasParameters.PageSize);
         }
-        public PageList<Categoria> GetCategoriasProdutos(CategoriasParameters categoriasParameters)
+        public async Task<PageList<Categoria>> GetCategoriasProdutos(CategoriasParameters categoriasParameters)
         {
-            return PageList<Categoria>.ToPageList(Get().Include(x => x.Produtos),
+            return await PageList<Categoria>.ToPageList(Get().Include(x => x.Produtos),
                 categoriasParameters.PageNumber,
                 categoriasParameters.PageSize);
 
