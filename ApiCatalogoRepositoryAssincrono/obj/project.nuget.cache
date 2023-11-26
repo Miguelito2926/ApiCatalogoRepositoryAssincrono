@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UoYkEo7YDUXnZjvBUQMo0yBIXUE4AdM67laSeebqNBKeO9x/vwU8BvoaxfwQV1pMmzLxP9wT9F337fHWDQW6og==",
+  "dgSpecHash": "rob2UhEpt+EU5GZOKULnK4vWCPWLhWTFQhV/fjH9NeV+sDumYF+p0GXuFudVCGAwnreduqNQOAckwst4TkVPuQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\EliteDesk ssd\\source\\repos\\Miguelito2926\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono\\ApiCatalogoRepositoryAssincrono.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,8 @@
     "C:\\Users\\EliteDesk ssd\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\7.0.14\\microsoft.aspnetcore.cryptography.internal.7.0.14.nupkg.sha512",
     "C:\\Users\\EliteDesk ssd\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\7.0.14\\microsoft.aspnetcore.cryptography.keyderivation.7.0.14.nupkg.sha512",
     "C:\\Users\\EliteDesk ssd\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\7.0.14\\microsoft.aspnetcore.identity.entityframeworkcore.7.0.14.nupkg.sha512",
+    "C:\\Users\\EliteDesk ssd\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning\\5.1.0\\microsoft.aspnetcore.mvc.versioning.5.1.0.nupkg.sha512",
+    "C:\\Users\\EliteDesk ssd\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning.apiexplorer\\5.1.0\\microsoft.aspnetcore.mvc.versioning.apiexplorer.5.1.0.nupkg.sha512",
     "C:\\Users\\EliteDesk ssd\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\EliteDesk ssd\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.14\\microsoft.entityframeworkcore.7.0.14.nupkg.sha512",
     "C:\\Users\\EliteDesk ssd\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.14\\microsoft.entityframeworkcore.abstractions.7.0.14.nupkg.sha512",
