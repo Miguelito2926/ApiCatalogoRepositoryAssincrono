@@ -7,8 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Net;
-using System.Reflection;
+
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -25,10 +24,10 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title="ApiCatalogoRepositoryAssincrono", Version = "v1" });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
     {
-        Name = "Authorizatio",
+        Name = "Authorization",
         Type = SecuritySchemeType.ApiKey,
         Scheme = "Bearer",
-        BearerFormat = "JWT",
+        BearerFormat = "Jwt",
         In = ParameterLocation.Header,
         Description = "Header de autorização JWT usando o esquema Beare.\r\n\r\nInforme'Bearer'[espaço] e o " +
          "seu token.\r\n\r\nExemplo:'Bearer12334abcdef'"
@@ -48,58 +47,62 @@ builder.Services.AddSwaggerGen(c =>
             new string[]{}
         }
     });
-    
-     
+
+
 });
 
 
-    string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
-    builder.Services.AddDbContext<DbCatalogoContext>(options =>
-    options.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection)));
+string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<DbCatalogoContext>(options =>
+options.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection)));
 
-    builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-        .AddEntityFrameworkStores<DbCatalogoContext>().AddDefaultTokenProviders();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<DbCatalogoContext>().AddDefaultTokenProviders();
 
-    builder.Services.AddAuthentication(
-        JwtBearerDefaults.AuthenticationScheme).
-        AddJwtBearer(options =>
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidAudience = builder.Configuration["TokenConfiguration:Audience"],
-            ValidIssuer = builder.Configuration["TokenConfiguration:Issuer"],
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
-        });
-
-    builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-    var mappingConfig = new MapperConfiguration(mc =>
-    { mc.AddProfile(new MappingProfile()); });
-
-    IMapper mapper = mappingConfig.CreateMapper();
-    builder.Services.AddSingleton(mapper);
-
-    var app = builder.Build();
-
-    // Configure the HTTP request pipeline.
-    if (app.Environment.IsDevelopment())
+builder.Services.AddAuthentication(
+    JwtBearerDefaults.AuthenticationScheme).
+    AddJwtBearer(options =>
+    options.TokenValidationParameters = new TokenValidationParameters
     {
-        app.UseSwagger();
-        app.UseSwaggerUI();
-    }
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidAudience = builder.Configuration["TokenConfiguration:Audience"],
+        ValidIssuer = builder.Configuration["TokenConfiguration:Issuer"],
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+    });
 
-    app.UseHttpsRedirection();
+builder.Services.AddCors();
 
-    app.UseRouting();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-    app.UseAuthentication();
+var mappingConfig = new MapperConfiguration(mc =>
+{ mc.AddProfile(new MappingProfile()); });
 
-    app.UseAuthorization();
+IMapper mapper = mappingConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
 
-    app.MapControllers();
+var app = builder.Build();
 
-    app.Run();
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseAuthentication();
+
+app.UseAuthorization();
+
+app.UseCors(opt => opt.AllowAnyOrigin().AllowAnyMethod());
+
+app.MapControllers();
+
+app.Run();
