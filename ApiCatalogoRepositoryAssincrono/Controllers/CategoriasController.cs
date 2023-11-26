@@ -3,11 +3,13 @@ using ApiCatalogoRepositoryAssincrono.Models;
 using ApiCatalogoRepositoryAssincrono.Pagination;
 using ApiCatalogoRepositoryAssincrono.Repository;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace ApiCatalogoRepositoryAssincrono.Controllers
 {
+  
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriasController : ControllerBase
@@ -52,6 +54,7 @@ namespace ApiCatalogoRepositoryAssincrono.Controllers
         }
 
         // Endpoint para obter todas as categorias
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CategoriaDTO>>> Get([FromQuery] CategoriasParameters categoriasParameters)
         {

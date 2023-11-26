@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ApiCatalogoRepositoryAssincrono")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+48f80027a4cc735909e433c519eb4df8ed75b701")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d047e66d19658017156d33220c969464aad1ff7")]
 [assembly: System.Reflection.AssemblyProductAttribute("ApiCatalogoRepositoryAssincrono")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ApiCatalogoRepositoryAssincrono")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

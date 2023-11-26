@@ -86,7 +86,7 @@ public class AutorizaController : ControllerBase
                 Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var credenciais = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            var expiracao = _config["TokenConfiguration:ExpireHours"];
+            var expiracao = _config["TokenConfiguration:ExpiresHours"];
             var expiration = DateTime.UtcNow.AddHours(double.Parse(expiracao));
 
             JwtSecurityToken token = new JwtSecurityToken

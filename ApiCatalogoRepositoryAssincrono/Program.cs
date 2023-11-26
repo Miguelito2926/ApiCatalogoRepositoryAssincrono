@@ -32,7 +32,7 @@ builder.Services.AddAuthentication(
         ValidateIssuer = true,
         ValidateAudience = true,
         ValidateLifetime = true,
-        ValidAudience = builder.Configuration["TokeConfiguration:Audience"],
+        ValidAudience = builder.Configuration["TokenConfiguration:Audience"],
         ValidIssuer = builder.Configuration["TokenConfiguration:Issuer"],
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(
