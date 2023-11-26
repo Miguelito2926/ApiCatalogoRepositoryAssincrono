@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace ApiCatalogoRepositoryAssincrono.Controllers
 {
-  
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriasController : ControllerBase
@@ -53,8 +53,7 @@ namespace ApiCatalogoRepositoryAssincrono.Controllers
             }
         }
 
-        // Endpoint para obter todas as categorias
-        [Authorize(AuthenticationSchemes = "Bearer")]
+        // Endpoint para obter todas as categorias       
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CategoriaDTO>>> Get([FromQuery] CategoriasParameters categoriasParameters)
         {
