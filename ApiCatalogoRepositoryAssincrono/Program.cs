@@ -74,7 +74,13 @@ builder.Services.AddAuthentication(
             Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     });
 
-builder.Services.AddCors();
+builder.Services.AddCors(optios =>
+{
+    optios.AddPolicy("EnableCORS", builder =>
+    {
+        builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().Build();
+    });
+});
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
@@ -101,7 +107,7 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
-app.UseCors(opt => opt.AllowAnyOrigin().AllowAnyMethod());
+app.UseCors("EnableCORS");
 
 app.MapControllers();
 
